@@ -6,7 +6,7 @@ const apps = ref(appList);
 <template>
   <main class="bg-bg text-fg">
     <section class="border-b border-rule bg-sunk">
-      <div class="mx-auto grid max-w-[1200px] grid-cols-2 items-center gap-14 px-8 py-18">
+      <div class="mx-auto grid max-w-[1200px] grid-cols-1 sm:grid-cols-2 items-center gap-14 px-8 py-18">
         <div>
           <h1 class="mb-5 font-mono text-[15px] font-medium uppercase tracking-[0.02em] text-mut">PluralPort - draft v0.1</h1>
           <p class="text-pretty text-[34px] font-normal leading-[1.3] tracking-[-0.022em]">A shared file format for plurality apps.</p>
@@ -40,16 +40,16 @@ const apps = ref(appList);
     </section>
 
     <section class="border-b border-rule">
-      <div class="mx-auto grid max-w-[1200px] grid-cols-3 px-8">
-        <div class="border-r border-rule px-0 py-11 pr-10">
+      <div class="mx-auto grid max-w-[1200px] grid-cols-1 sm:grid-cols-3 px-8">
+        <div class="sm:border-r border-rule px-10 sm:px-0 py-11 sm:pr-10">
           <h3 class="mb-2.5 text-[16px] font-semibold">Apps keep their own model</h3>
           <p class="text-[15px] leading-6 text-fg2">PluralPort is a format, not a schema rewrite. Apps keep their internal structure and agree on the export shape.</p>
         </div>
-        <div class="border-r border-rule px-10 py-11">
+        <div class="sm:border-r border-rule px-10 py-11">
           <h3 class="mb-2.5 text-[16px] font-semibold">Modules can be partial</h3>
           <p class="text-[15px] leading-6 text-fg2">Importers don't have to support everything. <code class="text-[13.5px]">capabilities.modules</code> tells you what a file contains.</p>
         </div>
-        <div class="px-0 py-11 pl-10">
+        <div class="px-10 sm:px-0 py-11 pl-10">
           <h3 class="mb-2.5 text-[16px] font-semibold">Nothing gets silently lost</h3>
           <p class="text-[15px] leading-6 text-fg2">Original IDs stay in <code class="text-[13.5px]">source_refs</code>, and app-specific fields live in namespaced <code class="text-[13.5px]">extensions</code>.</p>
         </div>

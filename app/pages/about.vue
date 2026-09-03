@@ -19,7 +19,7 @@
       <div class="bg-panel p-6">
         <h3 class="text-base font-semibold text-fg">Registering an app ID</h3>
         <p class="mt-2 text-[15px] leading-6 text-fg2">
-          One PR adding your short ID to the canonical list. Private namespaces don’t need registration — use a reverse-DNS key.
+          One PR adding your short ID to the canonical list. Private namespaces don’t need registration - use a reverse-DNS key.
         </p>
       </div>
       <div class="bg-panel p-6">
