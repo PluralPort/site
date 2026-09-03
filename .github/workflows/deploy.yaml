@@ -9,8 +9,13 @@ jobs:
     timeout-minutes: 60
     steps:
       - uses: actions/checkout@v6
+      - name: Install NPM Packages
+        run: npm ci
+      - name: Build Site
+        run: npm run build
       - name: Build & Deploy Worker
         uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist
