@@ -1,5 +1,7 @@
 <script setup lang="ts">
+import appList from '~/data/apps.json'
 
+const apps = ref(appList);
 </script>
 <template>
   <main class="bg-bg text-fg">
@@ -83,16 +85,7 @@
           <a href="#" @click.prevent="() => {}" class="text-[14px] text-fg hover:text-fg2">Adoption status</a>
         </div>
         <div class="flex flex-wrap gap-2 font-mono text-[13px]">
-          <span class="rounded-sm border border-rule2 px-[11px] py-[6px]">prism</span>
-          <span class="rounded-sm border border-rule2 px-[11px] py-[6px]">sheaf</span>
-          <span class="rounded-sm border border-rule2 px-[11px] py-[6px]">simply_plural</span>
-          <span class="rounded-sm border border-rule2 px-[11px] py-[6px]">pluralkit</span>
-          <span class="rounded-sm border border-rule2 px-[11px] py-[6px]">octocon</span>
-          <span class="rounded-sm border border-rule2 px-[11px] py-[6px]">plural_star</span>
-          <span class="rounded-sm border border-rule2 px-[11px] py-[6px]">lighthouse</span>
-          <span class="rounded-sm border border-rule2 px-[11px] py-[6px]">openselves</span>
-          <span class="rounded-sm border border-rule2 px-[11px] py-[6px]">ampersand</span>
-          <span class="rounded-sm border border-rule2 px-[11px] py-[6px]">pluralspace</span>
+          <span class="rounded-sm border border-rule2 px-[11px] py-[6px]" v-for="app in apps" :key="app">{{ app.app_id }}</span>
         </div>
       </div>
     </section>
