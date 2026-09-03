@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import appList from '~/data/apps.json'
 import Checkmark from '~/components/icons/checkmark.vue'
-import Xmark from '~/components/icons/xmark.vue'
+import Xmark from '~/components/icons/xmark-square.vue'
 
 const apps = appList
 const appProfiles = apps
