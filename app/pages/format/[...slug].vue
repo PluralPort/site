@@ -1,23 +1,11 @@
 <script setup lang="ts">
 const route = useRoute()
 
-const candidatePaths = [
-  route.path,
-  route.path.replace(/\/$/, ''),
-  `${route.path.replace(/\/$/, '')}/index`,
-  route.path.replace(/^\/format/, '/format/index'),
-  route.path.replace(/^\/format\//, '/format/'),
-]
-
 const { data: page } = await useAsyncData(`format-page-${route.path}`, () => {
-  for (const path of candidatePaths) {
-    const match = queryCollection('format').path(path).first()
-    if (match) {
-      return match
-    }
-  }
+  const slug = Array.isArray(route.params.slug) ? route.params.slug.join('/') : String(route.params.slug || '')
+  const path = `/format/${slug}`.replace(/\/$/, '')
 
-  return null
+  return queryCollection('format').path(path).first()
 })
 
 if (!page.value) {
