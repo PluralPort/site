@@ -18,6 +18,7 @@
     "cf-typegen": "wrangler types"
   },
   "dependencies": {
+    "@headlessui/vue": "^1.7.23",
     "@nuxt/content": "^3.16.0",
     "@nuxt/hints": "^1.1.4",
     "@nuxt/image": "^2.1.0",
