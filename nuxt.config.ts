@@ -14,6 +14,13 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     "nitro-cloudflare-dev"
   ],
+  app: {
+    head: {
+      link: [
+        { rel: 'icon', type: 'image/x-icon', href: '/images/pluralport-logo.png' },
+      ],
+    }
+  },
   site: {
     url: 'https://pluralport.com',
     name: 'PluralPort',
