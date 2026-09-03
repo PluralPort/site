@@ -13,9 +13,8 @@ const apps = ref(appList);
           <p class="mt-5 max-w-[52ch] text-[16.5px] leading-[1.65] text-fg2">Most plurality apps store the same kinds of data: members, systems, fronting history, custom fields, and notes. The problem is that they don’t agree on the shape. PluralPort gives apps one common export and import format, instead of a pile of one-off converters.</p>
 
           <div class="mt-7 flex gap-5 text-[14.5px]">
-            <a href="#" @click.prevent="() => {}" class="text-fg hover:text-fg2">Read the spec &#8594;</a>
-            <a href="#" @click.prevent="() => {}" class="text-fg hover:text-fg2">Connector protocol &#8594;</a>
-            <a href="#" @click.prevent="() => {}" class="text-fg hover:text-fg2">Send feedback &#8594;</a>
+            <NuxtLink href="/format" class="text-fg hover:text-fg2">Read the Format spec ></NuxtLink>
+            <NuxtLink href="/sync" class="text-fg hover:text-fg2">Sync protocol ></NuxtLink>
           </div>
         </div>
 
@@ -82,7 +81,7 @@ const apps = ref(appList);
       <div class="mx-auto max-w-[1200px] px-8 pb-24 pt-14">
         <div class="mb-[22px] flex items-baseline justify-between">
           <h2 class="text-[16px] font-semibold">Registered apps</h2>
-          <a href="#" @click.prevent="() => {}" class="text-[14px] text-fg hover:text-fg2">Adoption status</a>
+<!--          <a href="#" @click.prevent="() => {}" class="text-[14px] text-fg hover:text-fg2">Adoption status</a>-->
         </div>
         <div class="flex flex-wrap gap-2 font-mono text-[13px]">
           <span class="rounded-sm border border-rule2 px-[11px] py-[6px]" v-for="app in apps" :key="app">{{ app.app_id }}</span>
