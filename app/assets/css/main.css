@@ -1,0 +1,205 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+    --color-bg: #fbfaf8;
+    --color-panel: #ffffff;
+    --color-sunk: #f4f3f0;
+    --color-fg: #1b1a19;
+    --color-fg2: #4a4844;
+    --color-mut: #78756f;
+    --color-rule: #e4e2dd;
+    --color-rule2: #cfccc5;
+    --color-code: #f3f2ef;
+    --color-acc: #96681a;
+    --color-acc-fg: #fbfaf8;
+    --color-ok: #2c7565;
+    --color-warn: #96681a;
+    --color-err: #a8543f;
+    --color-inv-bg: #1b1a19;
+    --color-inv-fg: #f4f3f0;
+    --color-link: #96681a;
+}
+
+:root {
+    background-color: var(--color-bg);
+    color: var(--color-fg);
+}
+
+html, body {
+    background: var(--color-bg);
+    color: var(--color-fg);
+}
+
+body {
+    font-family: "Inter", "Segoe UI", sans-serif;
+    line-height: 1.6;
+}
+
+/** Dark mode **/
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        --color-bg: #151516;
+        --color-panel: #1b1b1c;
+        --color-sunk: #202021;
+        --color-fg: #eae8e4;
+        --color-fg2: #c1beb8;
+        --color-mut: #8d8a84;
+        --color-rule: #2b2b2d;
+        --color-rule2: #3c3c3f;
+        --color-code: #1d1d1f;
+        --color-acc: #dbab55;
+        --color-acc-fg: #161616;
+        --color-ok: #3fc9b0;
+        --color-warn: #dbab55;
+        --color-err: #d98b7a;
+        --color-inv-bg: #eae8e4;
+        --color-inv-fg: #161616;
+        --color-link: #96681a;
+    }
+}
+
+[data-theme="dark"] {
+    --color-bg: #151516;
+    --color-panel: #1b1b1c;
+    --color-sunk: #202021;
+    --color-fg: #eae8e4;
+    --color-fg2: #c1beb8;
+    --color-mut: #8d8a84;
+    --color-rule: #2b2b2d;
+    --color-rule2: #3c3c3f;
+    --color-code: #1d1d1f;
+    --color-acc: #dbab55;
+    --color-acc-fg: #161616;
+    --color-ok: #3fc9b0;
+    --color-warn: #dbab55;
+    --color-err: #d98b7a;
+    --color-inv-bg: #eae8e4;
+    --color-inv-fg: #161616;
+    --color-link: #96681a;
+}
+
+.spec-markdown {
+    color: var(--color-fg);
+    max-width: 72ch;
+    line-height: 1.7;
+}
+
+.spec-markdown > * + * {
+    margin-top: 1rem;
+}
+
+.spec-markdown h1,
+.spec-markdown h2,
+.spec-markdown h3,
+.spec-markdown h4 {
+    color: var(--color-fg);
+    line-height: 1.2;
+    margin: 2rem 0 0.75rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+}
+
+.spec-markdown h1 {
+    font-size: clamp(2rem, 3vw, 2.8rem);
+    margin-top: 0;
+}
+
+.spec-markdown h2 {
+    font-size: clamp(1.45rem, 2vw, 2rem);
+    border-bottom: 1px solid var(--color-rule);
+    padding-bottom: 0.45rem;
+}
+
+.spec-markdown h3 {
+    font-size: 1.2rem;
+}
+
+.spec-markdown p,
+.spec-markdown li,
+.spec-markdown td,
+.spec-markdown th {
+    color: var(--color-fg2);
+}
+
+.spec-markdown a {
+    color: var(--color-link);
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+}
+
+.spec-markdown ul,
+.spec-markdown ol {
+    padding-left: 1.5rem;
+    margin: 1rem 0;
+}
+
+.spec-markdown ul {
+    list-style: disc;
+}
+
+.spec-markdown ol {
+    list-style: decimal;
+}
+
+.spec-markdown table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.25rem 0;
+    border: 1px solid var(--color-rule);
+    background: var(--color-panel);
+}
+
+.spec-markdown th,
+.spec-markdown td {
+    padding: 0.7rem 0.8rem;
+    border: 1px solid var(--color-rule);
+    text-align: left;
+    vertical-align: top;
+}
+
+.spec-markdown th {
+    background: var(--color-sunk);
+    color: var(--color-fg);
+    font-weight: 600;
+}
+
+.spec-markdown code {
+    font-family: "SFMono-Regular", Consolas, monospace;
+    font-size: 0.9em;
+    background: var(--color-code);
+    color: var(--color-fg);
+    border: 1px solid var(--color-rule);
+    border-radius: 0.35rem;
+    padding: 0.15rem 0.35rem;
+}
+
+.spec-markdown pre {
+    overflow-x: auto;
+    background: var(--color-panel);
+    border: 1px solid var(--color-rule);
+    border-radius: 0.75rem;
+    padding: 1rem 1.1rem;
+    margin: 1.25rem 0;
+}
+
+.spec-markdown pre code {
+    background: transparent;
+    border: 0;
+    padding: 0;
+    font-size: 0.88rem;
+    color: var(--color-fg);
+}
+
+.spec-markdown blockquote {
+    margin: 1.25rem 0;
+    padding-left: 1rem;
+    border-left: 3px solid var(--color-rule2);
+    color: var(--color-fg2);
+}
+
+.spec-markdown hr {
+    border: 0;
+    border-top: 1px solid var(--color-rule);
+    margin: 2rem 0;
+}

@@ -1,0 +1,460 @@
+[
+  {
+    "name": "Prism",
+    "app_id": "prism",
+    "status": "Adopter",
+    "export": true,
+    "import": false,
+    "description": "Local-first Flutter app with structured data tables and an encrypted .prism export envelope.",
+    "website": "",
+    "logo": "",
+    "modules": ["members", "fronting", "groups", "custom_fields", "notes", "chat", "assets", "privacy"],
+    "export_shape": "Encrypted .prism JSON envelope",
+    "members": true,
+    "fronting": "Per-member intervals plus sleep",
+    "groups_tags": "Hierarchical groups",
+    "custom_fields": "Definitions and values",
+    "notes": "Notes",
+    "chat_messages": "Internal chat with media + member board posts",
+    "assets_privacy": "Assets, friend/share metadata",
+    "profile": {
+      "slug": "prism",
+      "name": "Prism",
+      "status": "Adopter",
+      "summary": "Local-first Flutter app with structured database tables and an encrypted .prism export envelope (currently V3). Broad in scope: members, fronting, groups, custom fields, chat, member board posts, polls, habits, reminders, media, and local sharing.",
+      "mapping": [
+        { "source": "headmates[]", "target": "Member" },
+        { "source": "frontSessions[] + sleepSessions[]", "target": "FrontPeriod with single-member assignments; sleep via status: \"sleep\"" },
+        { "source": "memberGroups[] with parentGroupId", "target": "Group + GroupMembership" },
+        { "source": "customFields[] + customFieldValues[]", "target": "CustomFieldDefinition + CustomFieldValue" },
+        { "source": "conversations[] + messages[] + mediaAttachments[]", "target": "Conversation + ChatMessage + Attachment" },
+        { "source": "member_board_posts (sync-only, not in .prism export envelope)", "target": "BoardPost in the boards module" }
+      ],
+      "links": [
+        { "label": "Full Prism mapping", "href": "adopt.html#prism" },
+        { "label": "Research doc", "href": "https://github.com/pluralport/spec/blob/main/docs/apps/prism.md" }
+      ]
+    }
+  },
+  {
+    "name": "Sheaf",
+    "app_id": "sheaf",
+    "status": "Adopter",
+    "export": true,
+    "import": false,
+    "description": "FastAPI/PostgreSQL app exposing JSON export v2 plus async zip backups with images.",
+    "website": "",
+    "logo": "",
+    "modules": ["members", "fronting", "groups", "custom_fields", "notes", "chat", "assets", "privacy", "polls", "reminders"],
+    "export_shape": "/v1/export JSON v2; async zip backup with images",
+    "members": true,
+    "fronting": "Co-front intervals",
+    "groups_tags": "Hierarchical groups + tags",
+    "custom_fields": "Definitions and values",
+    "notes": "Journals + revision history",
+    "chat_messages": "Board messages, polls, and reminders",
+    "assets_privacy": "Avatar URLs, uploaded-file inventory, privacy and safety metadata",
+    "profile": {
+      "slug": "sheaf",
+      "name": "Sheaf",
+      "status": "Adopter",
+      "summary": "FastAPI/PostgreSQL app with application-level encryption. It already exposes /v1/export returning JSON v2 with system, members, fronts, groups, tags, custom fields, journals, revision history, board messages, polls, reminders, watch-token notification config, and uploaded-file inventory.",
+      "mapping": [
+        { "source": "system object", "target": "System" },
+        { "source": "members[]", "target": "Member" },
+        { "source": "fronts[] with inline member_ids", "target": "FrontPeriod + one FrontAssignment per member_id" },
+        { "source": "groups[] with parent_id + member_ids", "target": "Group + GroupMembership" },
+        { "source": "tags[] with inline member_ids", "target": "TaxonomyTerm + TaxonomyAssignment" },
+        { "source": "custom_fields[] with nested values", "target": "CustomFieldDefinition + CustomFieldValue" },
+        { "source": "journals[]", "target": "Note" },
+        { "source": "messages[]", "target": "BoardPost; replies are preserved in extensions for now" },
+        { "source": "polls[], reminders[]", "target": "extensions.sheaf.* until modules land" }
+      ],
+      "links": [
+        { "label": "Full Sheaf mapping", "href": "adopt.html#sheaf" },
+        { "label": "Research doc", "href": "https://github.com/pluralport/spec/blob/main/docs/apps/sheaf.md" },
+        { "label": "Repository", "href": "https://github.com/sheaf-project/sheaf" }
+      ]
+    }
+  },
+  {
+    "name": "PluralSpace",
+    "app_id": "pluralspace",
+    "status": "Adopter",
+    "export": true,
+    "import": true,
+    "description": "Web app with native OpenPlural v0.1 import and export, bundled media, relationships, boards, polls, and PluralSpace-specific mood preservation.",
+    "website": "https://pluralspace.app",
+    "logo": "https://pluralspace.app/icons/pluralspace_icon.svg",
+    "modules": [
+      "members",
+      "fronting",
+      "groups",
+      "taxonomy",
+      "custom_fields",
+      "notes",
+      "chat",
+      "boards",
+      "assets",
+      "privacy",
+      "polls",
+      "relationships"
+    ],
+    "export_shape": "Per-system ZIP with manifest.json, openplural.json, and media/. Whole-account exports contain account data plus one OpenPlural document per owned system.",
+    "members": true,
+    "fronting": "Per-member FrontPeriod intervals with one assignment each; overlapping periods represent co-fronting. Front types are exported as status taxonomy terms.",
+    "groups_tags": "Nested groups preserve parent_group_id, with memberships exported separately. Member roles and front types are represented through taxonomy.",
+    "custom_fields": "Definitions and populated member values, including privacy and multiple-value metadata.",
+    "notes": "Journal entries and ordinary notes share notes[] and are distinguished by extensions.kind; visibility is mapped to OpenPlural values.",
+    "chat_messages": "Channels become conversations with separate messages and author_member_id. Attachments and reactions are not currently exported.",
+    "assets_privacy": "Bundled media with asset metadata and SHA-256 checksums. Privacy is exported for systems, members, and custom fields; notes include visibility.",
+    "profile": {
+      "slug": "pluralspace",
+      "name": "PluralSpace",
+      "status": "Adopter",
+      "summary": "PluralSpace natively imports and exports OpenPlural v0.1. It supports the chat, boards, provisional relationships, and provisional polls modules. Mood history is preserved under extensions[\"pluralspace:moods\"].",
+      "mapping": [
+        {
+          "source": "members",
+          "target": "Member records with proxy tags, privacy, profile visibility, pinned state, and template state"
+        },
+        {
+          "source": "fronts and system front types",
+          "target": "FrontPeriod with one member assignment per interval; front types become status TaxonomyTerms and TaxonomyAssignments"
+        },
+        {
+          "source": "member roles",
+          "target": "Role TaxonomyTerms and TaxonomyAssignments"
+        },
+        {
+          "source": "member groups and memberships",
+          "target": "Group with parent_group_id plus GroupMembership records"
+        },
+        {
+          "source": "custom fields and custom field values",
+          "target": "CustomFieldDefinition and CustomFieldValue records"
+        },
+        {
+          "source": "journal entries and notes",
+          "target": "Note records distinguished by extensions.kind as journal or note"
+        },
+        {
+          "source": "chat channels and messages",
+          "target": "Conversation and ChatMessage records with member author IDs"
+        },
+        {
+          "source": "relationship types and member relationships",
+          "target": "Provisional relationships module with RelationshipType and MemberRelationship records"
+        },
+        {
+          "source": "polls, options, and votes",
+          "target": "Provisional polls module using PluralSpace's current field interpretation"
+        },
+        {
+          "source": "thought of the day entries",
+          "target": "System-wide BoardPost records with extensions.kind set to thought_of_the_day"
+        },
+        {
+          "source": "system mood entries",
+          "target": "extensions[\"pluralspace:moods\"]"
+        },
+        {
+          "source": "member and system media",
+          "target": "Asset records with bundled files, source references, and checksums"
+        }
+      ],
+      "links": [
+        {
+          "label": "Implementation profile",
+          "href": "https://github.com/pluralport/spec/blob/main/docs/apps/pluralspace.md"
+        },
+        {
+          "label": "Website",
+          "href": "https://pluralspace.app/"
+        }
+      ]
+    }
+  },
+  {
+    "name": "Ampersand",
+    "app_id": "ampersand",
+    "status": "Research",
+    "export": true,
+    "import": false,
+    "description": "Offline-first Tauri/Vue app with a self-backup archive rather than a portable export format.",
+    "website": "https://ampersand.app",
+    "logo": "https://ampersand.app/logo.png",
+    "modules": ["members", "fronting", "groups", "custom_fields", "notes", "chat", "assets", "privacy"],
+    "export_shape": "No production interoperable export; .ampar self-backup only",
+    "members": true,
+    "fronting": "Per-member intervals with main/influencing/custom-status/presence",
+    "groups_tags": "Typed tags + nested systems",
+    "custom_fields": "Definitions, string values on members",
+    "notes": "Journal posts",
+    "chat_messages": "Board messages with polls",
+    "assets_privacy": "Imports SP / Octocon / PluralKit / Tupperbox",
+    "profile": {
+      "slug": "ampersand",
+      "name": "Ampersand",
+      "status": "Research",
+      "summary": "Offline-first Tauri/Vue app. It has no production interoperable export today; the only normal export is a self-backup .ampar archive, and its interop surface is import-first.",
+      "mapping": [
+        { "source": "nested systems", "target": "System records with parent_system_id" },
+        { "source": "per-member fronting intervals", "target": "FrontPeriod + assignment metadata" },
+        { "source": "typed tags", "target": "Group + TaxonomyTerm patterns" },
+        { "source": "custom field values", "target": "CustomFieldDefinition + CustomFieldValue" },
+        { "source": "board messages with polls", "target": "BoardPost and extensions" }
+      ],
+      "links": [
+        { "label": "Research doc", "href": "https://github.com/pluralport/spec/blob/main/docs/apps/ampersand.md" },
+        { "label": "Repository", "href": "https://github.com/NyaomiDEV/Ampersand" }
+      ]
+    }
+  },
+  {
+    "name": "Lighthouse",
+    "app_id": "lighthouse",
+    "status": "Research",
+    "export": true,
+    "import": false,
+    "description": "Server-backed app exporting a ZIP of CSV files plus a narrow token API.",
+    "website": "",
+    "logo": "",
+    "modules": ["members", "fronting", "groups", "custom_fields", "notes", "chat", "assets", "privacy"],
+    "export_shape": "ZIP of CSVs + narrow token API",
+    "members": true,
+    "fronting": "Stubbed in inspected source",
+    "groups_tags": "Subsystems as systems",
+    "custom_fields": "Fixed rich alter fields",
+    "notes": "Journals, communal journals, BDA plans, inner worlds, rules, wishlist",
+    "chat_messages": "Forum/thread posts",
+    "assets_privacy": "Image URLs/blobs, token permissions",
+    "profile": {
+      "slug": "lighthouse",
+      "name": "Lighthouse",
+      "status": "Research",
+      "summary": "Server-backed Node/Express + PostgreSQL app. Exports a ZIP of CSV files and has a narrow token API. Most of its richer data lands in extensions until a converter is built.",
+      "mapping": [
+        { "source": "Subsystems as separate systems", "target": "System with parent_system_id" },
+        { "source": "Fixed alter fields", "target": "CustomFieldDefinition or taxonomy mapping" },
+        { "source": "relationships column on alters", "target": "MemberRelationship + RelationshipType via heuristic parse" },
+        { "source": "forums + threads + journals", "target": "Conversation + Note" }
+      ],
+      "links": [
+        { "label": "Research doc", "href": "https://github.com/pluralport/spec/blob/main/docs/apps/lighthouse.md" },
+        { "label": "Repository", "href": "https://github.com/team-crystalline/Lighthouse" }
+      ]
+    }
+  },
+  {
+    "name": "Octocon",
+    "app_id": "octocon",
+    "status": "Research",
+    "export": true,
+    "import": false,
+    "description": "Elixir/Phoenix app with Discord export formats and a full JSON export option.",
+    "website": "",
+    "logo": "",
+    "modules": ["members", "fronting", "groups", "custom_fields", "notes", "chat", "assets", "privacy"],
+    "export_shape": "Discord slash export: PK datafile v2 or Octocon 'full' JSON",
+    "members": true,
+    "fronting": "Per-alter intervals with short comments",
+    "groups_tags": "Hierarchical tags used as groups",
+    "custom_fields": "Definitions on user, values on alters",
+    "notes": "System + per-alter journals present in schema, not always in export",
+    "chat_messages": "Discord proxy fields on alter",
+    "assets_privacy": "Avatar URLs; four-level security + friendships",
+    "profile": {
+      "slug": "octocon",
+      "name": "Octocon",
+      "status": "Research",
+      "summary": "Elixir/Phoenix/ScyllaDB monolith plus Discord bot. It has a full JSON export option, plus Discord-based migration formats that still matter for users exiting before shutdown.",
+      "mapping": [
+        { "source": "Alters.Alter with flags", "target": "Member; preserve flags in extensions" },
+        { "source": "Fronts.Front rows", "target": "FrontPeriod + FrontAssignment" },
+        { "source": "Tags.Tag with parent_tag_id", "target": "Group + GroupMembership" },
+        { "source": "Accounts.Field + Alters.Field values", "target": "CustomFieldDefinition + CustomFieldValue" },
+        { "source": "discord_proxies + security_level", "target": "ProxyTag + Privacy fragment" }
+      ],
+      "links": [
+        { "label": "Research doc", "href": "https://github.com/pluralport/spec/blob/main/docs/apps/octocon.md" },
+        { "label": "Backend repo", "href": "https://github.com/OctoconDev/octocon" },
+        { "label": "App repo", "href": "https://github.com/OctoconDev/app" },
+        { "label": "Public docs", "href": "https://octocon.app/docs" }
+      ]
+    }
+  },
+  {
+    "name": "OpenSelves",
+    "app_id": "openselves",
+    "status": "Research",
+    "export": false,
+    "import": false,
+    "description": "Smaller offline-first app with browser storage and a sync schema, but no general export file found.",
+    "website": "",
+    "logo": "",
+    "modules": ["members", "fronting"],
+    "export_shape": "Sync log DTOs; no export found",
+    "members": true,
+    "fronting": "Per-member intervals",
+    "groups_tags": "No",
+    "custom_fields": "No",
+    "notes": "No",
+    "chat_messages": "No",
+    "assets_privacy": "Member image, account auth",
+    "profile": {
+      "slug": "openselves",
+      "name": "OpenSelves",
+      "status": "Research",
+      "summary": "Smaller offline-first app with browser IndexedDB + a Drizzle/PostgreSQL sync schema. No general export file was found in source, so the portable shape is inferred from DTOs and schema.",
+      "mapping": [
+        { "source": "per-member front intervals", "target": "FrontPeriod" },
+        { "source": "no groups/custom fields/notes/chat", "target": "No portable representation yet" }
+      ],
+      "links": [
+        { "label": "Research doc", "href": "https://github.com/pluralport/spec/blob/main/docs/apps/openselves.md" },
+        { "label": "Repository", "href": "https://github.com/FreckleQueens/OpenSelves" }
+      ]
+    }
+  },
+  {
+    "name": "PluralKit",
+    "app_id": "pluralkit",
+    "status": "Research",
+    "export": true,
+    "import": false,
+    "description": "Discord bot with a public API and JSON datafile export based on switch events.",
+    "website": "https://pluralkit.me",
+    "logo": "",
+    "modules": ["members", "fronting", "groups", "privacy"],
+    "export_shape": "API + datafile v2 JSON",
+    "members": true,
+    "fronting": "Switch events",
+    "groups_tags": "Flat groups",
+    "custom_fields": "No",
+    "notes": "No",
+    "chat_messages": "Discord proxy records (out of core export)",
+    "assets_privacy": "Avatar/banner URLs, rich privacy",
+    "profile": {
+      "slug": "pluralkit",
+      "name": "PluralKit",
+      "status": "Research",
+      "summary": "Discord bot with a public API and a JSON datafile produced by DataFileService.ExportSystem. It models fronting as switch events rather than intervals.",
+      "mapping": [
+        { "source": "switches[] with members array", "target": "FrontEvent + assignment records" },
+        { "source": "members[] with proxy_tags", "target": "Member + ProxyTag" },
+        { "source": "flat groups[]", "target": "Group with null parent_group_id" },
+        { "source": "per-record privacy", "target": "Privacy fragment with PluralKit raw detail" }
+      ],
+      "links": [
+        { "label": "Research doc", "href": "https://github.com/pluralport/spec/blob/main/docs/apps/pluralkit.md" },
+        { "label": "API docs", "href": "https://pluralkit.me/api/" }
+      ]
+    }
+  },
+  {
+    "name": "Plural Star",
+    "app_id": "plural_star",
+    "status": "Research",
+    "export": true,
+    "import": false,
+    "description": "React Native app with local backup JSON and tiered fronting semantics.",
+    "website": "",
+    "logo": "",
+    "modules": ["members", "fronting", "groups", "custom_fields", "notes", "chat", "assets"],
+    "export_shape": "Local backup JSON v1.2",
+    "members": true,
+    "fronting": "Tiered primary / co-front / co-conscious",
+    "groups_tags": "Flat groups",
+    "custom_fields": "Definitions and values",
+    "notes": "Journal",
+    "chat_messages": "Channels/messages + noteboards",
+    "assets_privacy": "Avatar/banner dictionaries",
+    "profile": {
+      "slug": "plural-star",
+      "name": "Plural Star",
+      "status": "Research",
+      "summary": "React Native app with AsyncStorage + filesystem backups. It has tiered fronting, flat groups, definitions + values for custom fields, channels + messages, and noteboards.",
+      "mapping": [
+        { "source": "Tiered front periods", "target": "FrontPeriod with explicit front_role + source_kind: \"tiered\"" },
+        { "source": "chatChannels + ps:chat:<id> messages", "target": "Conversation + ChatMessage" },
+        { "source": "noteboards", "target": "BoardPost with target_member_id + pinned" }
+      ],
+      "links": [
+        { "label": "Research doc", "href": "https://github.com/pluralport/spec/blob/main/docs/apps/plural-star.md" },
+        { "label": "Repository", "href": "https://github.com/TheHanyou/Plural-Star" }
+      ]
+    }
+  },
+  {
+    "name": "Simply Plural",
+    "app_id": "simply_plural",
+    "status": "Research",
+    "export": true,
+    "import": false,
+    "description": "Public token API plus Mongo collection export used by migration tooling.",
+    "website": "",
+    "logo": "",
+    "modules": ["members", "fronting", "groups", "custom_fields", "notes", "chat", "assets", "privacy"],
+    "export_shape": "Mongo collection export + token API",
+    "members": true,
+    "fronting": "Per-member/status intervals",
+    "groups_tags": "Hierarchical groups",
+    "custom_fields": "Definitions, values on members",
+    "notes": "Notes",
+    "chat_messages": "Chat + board messages",
+    "assets_privacy": "Avatar URLs, privacy buckets, friends",
+    "profile": {
+      "slug": "simply-plural",
+      "name": "Simply Plural",
+      "status": "Research",
+      "summary": "Public token API + raw Mongo export. It still matters because many migration paths flow through it, even though the service is being discontinued.",
+      "mapping": [
+        { "source": "Per-member/status intervals", "target": "FrontPeriod" },
+        { "source": "Hierarchical groups", "target": "Group with parent_group_id" },
+        { "source": "Custom fronts", "target": "Member with is_custom_front: true" },
+        { "source": "Privacy buckets", "target": "Privacy fragment" },
+        { "source": "Channels + chat messages", "target": "Conversation + ChatMessage" },
+        { "source": "boardMessages", "target": "BoardPost" }
+      ],
+      "links": [
+        { "label": "Research doc", "href": "https://github.com/pluralport/spec/blob/main/docs/apps/simply-plural.md" },
+        { "label": "API source", "href": "https://github.com/ApparyllisOrg/SimplyPluralApi" },
+        { "label": "Discontinuation notice", "href": "https://apparyllis.com/simply-plural-will-be-discontinued/" }
+      ]
+    }
+  },
+  {
+    "name": "Tupperbox",
+    "app_id": "tupperbox",
+    "status": "Research",
+    "export": true,
+    "import": false,
+    "description": "Discord bot export that is useful as a migration source, not a long-term portable format.",
+    "website": "",
+    "logo": "",
+    "modules": ["members", "groups"],
+    "export_shape": "tul!export JSON (Discord bot, closed source)",
+    "members": true,
+    "fronting": "No",
+    "groups_tags": "Flat groups, one-per-member",
+    "custom_fields": "No",
+    "notes": "No",
+    "chat_messages": "Discord proxy bot only",
+    "assets_privacy": "Avatar URL (CDN) + banner; no privacy model",
+    "profile": {
+      "slug": "tupperbox",
+      "name": "Tupperbox",
+      "status": "Research",
+      "summary": "Discord bot export that is useful as a migration source, not a long-term portable format. It preserves the member and group model but not a general-purpose import/export contract.",
+      "mapping": [
+        { "source": "Discord proxy bot export", "target": "Member + Group records; preserve proxy info in extensions" },
+        { "source": "flat groups", "target": "Group with null parent_group_id" },
+        { "source": "no fronting or notes model", "target": "No portable representation yet" }
+      ],
+      "links": [
+        { "label": "Research doc", "href": "https://github.com/pluralport/spec/blob/main/docs/apps/tupperbox.md" }
+      ]
+    }
+  }
+]
