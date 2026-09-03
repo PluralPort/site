@@ -50,7 +50,7 @@ onMounted(() => {
 
 <template>
   <div class="min-h-screen bg-bg text-fg">
-    <header class="sticky top-0 border-b border-rule bg-bg/95 backdrop-blur-sm">
+    <header class="sticky top-0 border-b border-rule bg-bg/95 backdrop-blur-sm z-50">
       <div class="mx-auto flex h-15 max-w-300 items-center gap-5.5 px-6">
         <NuxtLink href="/" class="flex items-center gap-2">
           <NuxtImg src="/images/pluralport-logo.png" alt="PluralPort" class="h-7 w-7 rounded" />
