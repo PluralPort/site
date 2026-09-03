@@ -49,7 +49,7 @@ const apps = ref(appList);
           <h3 class="mb-2.5 text-[16px] font-semibold">Modules can be partial</h3>
           <p class="text-[15px] leading-6 text-fg2">Importers don't have to support everything. <code class="text-[13.5px]">capabilities.modules</code> tells you what a file contains.</p>
         </div>
-        <div class="px-10 sm:px-0 py-11 pl-10">
+        <div class="px-10 py-11 pl-10">
           <h3 class="mb-2.5 text-[16px] font-semibold">Nothing gets silently lost</h3>
           <p class="text-[15px] leading-6 text-fg2">Original IDs stay in <code class="text-[13.5px]">source_refs</code>, and app-specific fields live in namespaced <code class="text-[13.5px]">extensions</code>.</p>
         </div>
