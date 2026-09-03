@@ -1,24 +1,25 @@
 <script setup lang="ts">
 import appList from '~/data/apps.json'
+import ArrowRight from "~/components/icons/arrow-right.vue";
 
 const apps = ref(appList);
 </script>
 <template>
   <main class="bg-bg text-fg">
     <section class="border-b border-rule bg-sunk">
-      <div class="mx-auto grid max-w-[1200px] grid-cols-1 sm:grid-cols-2 items-center gap-14 px-8 py-18">
+      <div class="mx-auto grid max-w-300 grid-cols-1 sm:grid-cols-2 items-center gap-14 px-8 py-18">
         <div>
           <h1 class="mb-5 font-mono text-[15px] font-medium uppercase tracking-[0.02em] text-mut">PluralPort - draft v0.1</h1>
           <p class="text-pretty text-[34px] font-normal leading-[1.3] tracking-[-0.022em]">A shared file format for plurality apps.</p>
           <p class="mt-5 max-w-[52ch] text-[16.5px] leading-[1.65] text-fg2">Most plurality apps store the same kinds of data: members, systems, fronting history, custom fields, and notes. The problem is that they don’t agree on the shape. PluralPort gives apps one common export and import format, instead of a pile of one-off converters.</p>
 
-          <div class="mt-7 flex gap-5 text-[14.5px]">
-            <NuxtLink href="/format" class="text-fg hover:text-fg2">Read the Format spec ></NuxtLink>
-            <NuxtLink href="/sync" class="text-fg hover:text-fg2">Sync protocol ></NuxtLink>
+          <div class="mt-7 flex gap-7 text-lg">
+            <NuxtLink href="/format" class="text-fg hover:text-fg2 flex">Read the Format Spec <ArrowRight class="mt-1 ml-2" /></NuxtLink>
+            <NuxtLink href="/sync" class="text-fg hover:text-fg2 flex">Sync protocol <ArrowRight class="mt-1 ml-2" /></NuxtLink>
           </div>
         </div>
 
-        <pre class="m-0 overflow-auto border border-rule bg-panel p-[22px] text-[12.5px] leading-[1.7] text-mut">{
+        <pre class="m-0 overflow-auto border border-rule bg-panel p-5.5 text-[12.5px] leading-[1.7] text-mut">{
   "pluralport_version": "0.1",
   "producer": { "app_id": "sheaf" },
   "members": [
@@ -39,7 +40,7 @@ const apps = ref(appList);
     </section>
 
     <section class="border-b border-rule">
-      <div class="mx-auto grid max-w-[1200px] grid-cols-1 sm:grid-cols-3 px-8">
+      <div class="mx-auto grid max-w-300 grid-cols-1 sm:grid-cols-3 px-8">
         <div class="sm:border-r border-rule px-10 sm:px-0 py-11 sm:pr-10">
           <h3 class="mb-2.5 text-[16px] font-semibold">Apps keep their own model</h3>
           <p class="text-[15px] leading-6 text-fg2">PluralPort is a format, not a schema rewrite. Apps keep their internal structure and agree on the export shape.</p>
@@ -78,8 +79,8 @@ const apps = ref(appList);
     </section>
 
     <section>
-      <div class="mx-auto max-w-[1200px] px-8 pb-24 pt-14">
-        <div class="mb-[22px] flex items-baseline justify-between">
+      <div class="mx-auto max-w-300 px-8 pb-24 pt-14">
+        <div class="mb-5.5 flex items-baseline justify-between">
           <h2 class="text-[16px] font-semibold">Registered apps</h2>
 <!--          <a href="#" @click.prevent="() => {}" class="text-[14px] text-fg hover:text-fg2">Adoption status</a>-->
         </div>
