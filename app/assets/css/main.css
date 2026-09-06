@@ -81,7 +81,6 @@ body {
 
 .spec-markdown {
     color: var(--color-fg);
-    max-width: 72ch;
     line-height: 1.7;
 }
 
@@ -115,6 +114,10 @@ body {
     font-size: 1.2rem;
 }
 
+.spec-markdown p {
+    margin: 1rem 0;
+}
+
 .spec-markdown p,
 .spec-markdown li,
 .spec-markdown td,
@@ -123,7 +126,7 @@ body {
 }
 
 .spec-markdown a {
-    color: var(--color-link);
+    color: var(--color-fg);
     text-decoration: underline;
     text-underline-offset: 0.15em;
 }
