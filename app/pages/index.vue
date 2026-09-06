@@ -1,8 +1,10 @@
 <script setup lang="ts">
-import appList from '~/data/apps.json'
 import ArrowRight from "~/components/icons/arrow-right.vue";
 
-const apps = ref(appList);
+const { data: appList } = await useAsyncData('home-apps', () =>
+  queryCollection('apps').order('order', 'ASC').select('app_id').all(),
+)
+const apps = computed(() => appList.value ?? [])
 </script>
 <template>
   <main class="bg-bg text-fg">

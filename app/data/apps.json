@@ -111,6 +111,7 @@
     "profile": {
       "slug": "pluralspace",
       "name": "PluralSpace",
+      "info_url": "/apps/pluralspace",
       "status": "Adopter",
       "summary": "PluralSpace natively imports and exports OpenPlural v0.1. It supports the chat, boards, provisional relationships, and provisional polls modules. Mood history is preserved under extensions[\"pluralspace:moods\"].",
       "mapping": [
