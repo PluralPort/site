@@ -42,7 +42,7 @@ const facts = computed(() => {
 })
 
 useSeoMeta({
-  title: () => `${page.value?.name} — PluralPort`,
+  title: () => `${page.value?.name}`,
   description: () => page.value?.summary,
 })
 
