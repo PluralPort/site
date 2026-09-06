@@ -92,7 +92,7 @@ modules:
     note: Provisional module; uses PluralSpace's current field interpretation.
   - key: reminders
     support: none
-    note: PluralSpace has reminders, but they are not mapped for import or export.
+    note: PluralSpace has reminder is early testing, but they are not mapped for import or export.
   - key: habits
     support: none
     note: No equivalent concept in PluralSpace.
