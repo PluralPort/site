@@ -6,12 +6,27 @@ import Moon from "~/components/icons/moon.vue";
 import Github from "~/components/icons/github.vue";
 import XMark from "~/components/icons/xmark-square.vue";
 
+const route = useRoute()
+
+const navLinks = [
+  { label: 'Format', to: '/format' },
+  { label: 'Sync', to: '/sync' },
+  { label: 'Adopt', to: '/adopt' },
+  { label: 'Apps', to: '/apps' },
+  { label: 'About', to: '/about' },
+]
+
+const isActive = (to: string) => route.path === to || route.path.startsWith(`${to}/`)
+
 const theme = ref<'light' | 'dark'>('light')
 const open = ref(false)
 const applyTheme = (value: 'light' | 'dark', persist = false) => {
   if (typeof document !== 'undefined') {
-    document.documentElement.setAttribute('data-theme', value)
-    document.documentElement.style.colorScheme = value
+    const root = document.documentElement
+    root.setAttribute('data-theme', value)
+    root.classList.toggle('dark', value === 'dark')
+    root.classList.toggle('light', value === 'light')
+    root.style.colorScheme = value
   }
 
   theme.value = value
@@ -61,11 +76,18 @@ onMounted(() => {
       </NuxtLink>
 
       <nav class="hidden shrink-0 items-center gap-5 whitespace-nowrap text-sm text-mut md:flex">
-        <NuxtLink href="/format" class="text-mut no-underline hover:text-fg">Format</NuxtLink>
-        <NuxtLink href="/sync" class="text-mut no-underline hover:text-fg">Sync</NuxtLink>
-        <NuxtLink href="/adopt" class="text-mut no-underline hover:text-fg">Adopt</NuxtLink>
-        <NuxtLink href="/apps" class="text-mut no-underline hover:text-fg">Apps</NuxtLink>
-        <NuxtLink href="/about" class="text-mut no-underline hover:text-fg">About</NuxtLink>
+        <NuxtLink
+          v-for="link in navLinks"
+          :key="link.to"
+          :href="link.to"
+          :aria-current="isActive(link.to) ? 'page' : undefined"
+          :class="[
+            'transition',
+            isActive(link.to)
+              ? 'text-fg underline decoration-acc decoration-2 underline-offset-8'
+              : 'text-mut no-underline hover:text-fg',
+          ]"
+        >{{ link.label }}</NuxtLink>
       </nav>
 
       <div class="ml-auto flex shrink-0 items-center gap-3 whitespace-nowrap text-sm text-mut">
@@ -91,11 +113,18 @@ onMounted(() => {
     <DisclosurePanel class="border-t border-rule2 md:hidden">
       <div class="mx-auto max-w-300 px-6 py-4">
         <nav class="grid gap-2 text-sm text-mut">
-          <NuxtLink href="/format" class="rounded px-2 py-2 no-underline hover:bg-bg2 hover:text-fg">Format</NuxtLink>
-          <NuxtLink href="/sync" class="rounded px-2 py-2 no-underline hover:bg-bg2 hover:text-fg">Sync</NuxtLink>
-          <NuxtLink href="/adopt" class="rounded px-2 py-2 no-underline hover:bg-bg2 hover:text-fg">Adopt</NuxtLink>
-          <NuxtLink href="/apps" class="rounded px-2 py-2 no-underline hover:bg-bg2 hover:text-fg">Apps</NuxtLink>
-          <NuxtLink href="/about" class="rounded px-2 py-2 no-underline hover:bg-bg2 hover:text-fg">About</NuxtLink>
+          <NuxtLink
+            v-for="link in navLinks"
+            :key="link.to"
+            :href="link.to"
+            :aria-current="isActive(link.to) ? 'page' : undefined"
+            :class="[
+              'rounded px-2 py-2 no-underline transition',
+              isActive(link.to)
+                ? 'bg-sunk text-fg'
+                : 'hover:bg-sunk hover:text-fg',
+            ]"
+          >{{ link.label }}</NuxtLink>
         </nav>
       </div>
     </DisclosurePanel>
