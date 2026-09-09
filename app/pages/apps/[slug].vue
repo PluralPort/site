@@ -36,8 +36,9 @@ const facts = computed(() => {
   return [
     { label: 'app_id', value: p.app_id, mono: true },
     { label: 'Status', value: p.status },
-    { label: 'Spec version', value: `v${p.spec_version}`, mono: true },
+    { label: 'Spec version', value: p.spec_version ? `v${String(p.spec_version).replace(/^v/, '')}` : null, mono: true },
     { label: 'Platform', value: p.platform },
+    { label: 'License', value: p.license },
   ].filter((fact) => Boolean(fact.value))
 })
 
@@ -77,7 +78,7 @@ const isExternalLink = (href: string) => {
     </header>
 
     <section class="overflow-hidden rounded-xl border border-rule bg-panel">
-      <dl class="grid grid-cols-2 gap-px bg-rule sm:grid-cols-3 lg:grid-cols-4">
+      <dl class="grid grid-cols-[repeat(auto-fit,minmax(11rem,1fr))] gap-px bg-rule">
         <div v-for="fact in facts" :key="fact.label" class="bg-panel px-4 py-3">
           <dt class="text-[11px] uppercase tracking-[0.12em] text-mut">{{ fact.label }}</dt>
           <dd :class="['mt-1 text-sm text-fg', fact.mono ? 'font-mono text-[13px]' : '']">{{ fact.value }}</dd>
@@ -92,6 +93,14 @@ const isExternalLink = (href: string) => {
         class="inline-flex items-center rounded-full border border-rule2 px-3 py-1.5 text-sm text-fg2 transition hover:border-rule hover:text-fg"
       >
         Website
+        <External class="ml-2" />
+      </a>
+      <a
+        v-if="page.repo"
+        :href="page.repo"
+        class="inline-flex items-center rounded-full border border-rule2 px-3 py-1.5 text-sm text-fg2 transition hover:border-rule hover:text-fg"
+      >
+        Source code
         <External class="ml-2" />
       </a>
       <a
@@ -174,8 +183,8 @@ const isExternalLink = (href: string) => {
       This page is maintained by the {{ page.name }} team. Something wrong?
       <a
         class="underline hover:text-fg2"
-        :href="`https://github.com/pluralport/pluralport.com/edit/main/content/apps/${page.app_id}.md`"
-      >Edit content/apps/{{ page.app_id }}.md</a>.
+        :href="`https://github.com/pluralport/site/edit/main/content/${page.stem}.md`"
+      >Edit content/{{ page.stem }}.md</a>.
     </footer>
   </main>
 </template>

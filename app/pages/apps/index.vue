@@ -66,6 +66,22 @@ const isExternalLink = (href: string) => {
             Full mapping and coverage <ArrowRight class="ml-2" />
           </NuxtLink>
           <a
+            v-if="app.website"
+            :href="app.website"
+            class="inline-flex items-center rounded-full border border-rule2 px-3 py-1.5 text-sm text-fg2 transition hover:border-rule hover:text-fg"
+          >
+            Website
+            <External class="ml-2" />
+          </a>
+          <a
+            v-if="app.repo"
+            :href="app.repo"
+            class="inline-flex items-center rounded-full border border-rule2 px-3 py-1.5 text-sm text-fg2 transition hover:border-rule hover:text-fg"
+          >
+            Source code
+            <External class="ml-2" />
+          </a>
+          <a
             v-for="link in app.links"
             :key="link.label"
             :href="link.href"
