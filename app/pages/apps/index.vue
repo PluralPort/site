@@ -33,7 +33,7 @@ const isExternalLink = (href: string) => {
             <th class="px-4 py-3 font-medium">App</th>
             <th class="px-4 py-3 font-medium">app_id</th>
             <th class="px-4 py-3 font-medium">Status</th>
-            <th class="px-4 py-3 font-medium">Modules</th>
+            <th class="px-4 py-3 font-medium hidden sm:block">Modules</th>
           </tr>
         </thead>
         <tbody>
@@ -43,7 +43,7 @@ const isExternalLink = (href: string) => {
             </td>
             <td class="px-4 py-4 font-mono text-[13px] text-mut">{{ app.app_id }}</td>
             <td class="px-4 py-4 text-[12.5px] uppercase tracking-[0.08em] text-mut">{{ app.status }}</td>
-            <td class="px-4 py-4 font-mono text-[12.5px] text-mut">{{ app.modules.map((m) => m.key).join(', ') }}</td>
+            <td class="px-4 py-4 font-mono text-[12.5px] text-mut hidden sm:block">{{ app.modules.map((m) => m.key).join(', ') }}</td>
           </tr>
         </tbody>
       </table>
