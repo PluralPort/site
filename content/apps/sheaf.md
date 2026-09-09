@@ -127,8 +127,6 @@ mapping:
 links:
   - label: Research Doc
     href: https://github.com/pluralport/spec/blob/main/docs/apps/sheaf.md
-  - label: Repository
-    href: https://github.com/sheaf-project/sheaf
 ---
 
 <!-- The area below is a markdown capable page for you to put content you want about your app. It's not required

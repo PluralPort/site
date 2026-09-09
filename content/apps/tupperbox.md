@@ -4,7 +4,7 @@ app_id: tupperbox
 # adopter | research | planned | inactive
 status: research
 # sort position on /apps (lower numbers first, starting with Prism and Sheaf due to their early adoption of PluralPort)
-order: 10
+order: 11
 description: >-
   Discord bot export that is useful as a migration source, not a long-term
   portable format.
@@ -21,12 +21,12 @@ export_shape: tul!export JSON (Discord bot, closed source)
 # PluralPort version targeted, e.g. '0.1'
 spec_version: null
 # Web (hosted) | iOS/Android | Desktop | Discord bot
-platform: null
-license: null
+platform: Discord bot
+license: Closed source
 # URLs to multiple locations
 repo: null
-last_verified: null
-website: null
+last_verified: 2026-09-09
+website: https://tupperbox.app
 apple_store: null
 google_play: null
 logo: null
@@ -113,6 +113,8 @@ mapping:
 links:
   - label: Research doc
     href: https://github.com/pluralport/spec/blob/main/docs/apps/tupperbox.md
+  - label: Command guide
+    href: https://tupperbox.app/guide
 ---
 
 <!-- The area below is a markdown capable page for you to put content you want about your app. It's not required

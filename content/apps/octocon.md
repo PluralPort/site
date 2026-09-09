@@ -2,16 +2,18 @@
 name: Octocon
 app_id: octocon
 # adopter | research | planned | inactive
-status: research
+status: inactive
 # sort position on /apps (lower numbers first, starting with Prism and Sheaf due to their early adoption of PluralPort)
-order: 5
+order: 6
 description: >-
   Elixir/Phoenix app with Discord export formats and a full JSON export
-  option.
+  option. Shutdown announced March 2026; sign-ups are closed.
 summary: >-
-  Elixir/Phoenix/ScyllaDB monolith plus Discord bot. It has a full JSON
+  Elixir/Phoenix/ScyllaDB monolith plus Discord bot. Its shutdown was
+  announced in March 2026 and sign-ups are closed, though parts of the
+  service were still reachable in September 2026. It has a full JSON
   export option, plus Discord-based migration formats that still matter
-  for users exiting before shutdown.
+  for users who exported before leaving.
 # Export/Import support (true/false)
 export: true
 import: false
@@ -21,12 +23,12 @@ export_shape: "Discord slash export: PK datafile v2 or Octocon 'full' JSON"
 # PluralPort version targeted, e.g. '0.1'
 spec_version: null
 # Web (hosted) | iOS/Android | Desktop | Discord bot
-platform: null
-license: null
+platform: iOS/Android + Discord bot
+license: MIT
 # URLs to multiple locations
-repo: null
-last_verified: null
-website: null
+repo: https://github.com/OctoconDev/octocon
+last_verified: 2026-09-09
+website: https://octocon.app
 apple_store: null
 google_play: null
 logo: null
@@ -117,8 +119,6 @@ mapping:
 links:
   - label: Research doc
     href: https://github.com/pluralport/spec/blob/main/docs/apps/octocon.md
-  - label: Backend repo
-    href: https://github.com/OctoconDev/octocon
   - label: App repo
     href: https://github.com/OctoconDev/app
   - label: Public docs

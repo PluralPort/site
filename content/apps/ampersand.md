@@ -4,32 +4,33 @@ app_id: ampersand
 # adopter | research | planned | inactive
 status: research
 # sort position on /apps (lower numbers first, starting with Prism and Sheaf due to their early adoption of PluralPort)
-order: 3
+order: 4
 description: >-
-  Offline-first Tauri/Vue app with a self-backup archive rather than a
-  portable export format.
+  Offline-first Tauri/Vue app with a self-backup archive and a generic
+  JSON export in its own schema.
 summary: >-
-  Offline-first Tauri/Vue app. It has no production interoperable export
-  today; the only normal export is a self-backup .ampar archive, and its
-  interop surface is import-first.
+  Offline-first Tauri/Vue app. Its main backup is a self-contained .ampar
+  archive, and since 0.2.0 it also writes a generic JSON export in its own
+  schema that other tools can read. Its interop surface is import-first:
+  it reads Simply Plural, Octocon, PluralKit, and Tupperbox exports.
 # Export/Import support (true/false)
 export: true
 import: false
 # Overview of what the export physically is, e.g. "Single JSON document", "ZIP with manifest and media/", "encrypted envelope", etc.
-export_shape: No production interoperable export; .ampar self-backup only
+export_shape: .ampar self-backup archive, or a single JSON document in Ampersand's own schema
 
 # PluralPort version targeted, e.g. '0.1'
 spec_version: null
 # Web (hosted) | iOS/Android | Desktop | Discord bot
-platform: null
-license: null
+platform: Android, iOS (sideload), Desktop
+license: AGPL-3.0-only
 # URLs to multiple locations
-repo: null
-last_verified: null
-website: https://ampersand.app
+repo: https://codeberg.org/Ampersand/app
+last_verified: 2026-09-09
+website: https://ampersand.moe
 apple_store: null
-google_play: null
-logo: https://ampersand.app/logo.png
+google_play: https://play.google.com/store/apps/details?id=moe.ampersand.track
+logo: /images/logos/ampersand.png
 self_reported: true
 
 # Every module in the spec is listed below. Fill in the ones your app touches
@@ -81,7 +82,7 @@ modules:
   - key: relationships
     support: null
     note: null
- # provisional in v0.1
+  # provisional in v0.1
   - key: polls
     support: null
     note: null
@@ -117,8 +118,10 @@ mapping:
 links:
   - label: Research doc
     href: https://github.com/pluralport/spec/blob/main/docs/apps/ampersand.md
-  - label: Repository
+  - label: GitHub mirror
     href: https://github.com/NyaomiDEV/Ampersand
+  - label: Export docs
+    href: https://codeberg.org/Ampersand/app/wiki/Import-Export
 ---
 
 <!-- The area below is a markdown capable page for you to put content you want about your app. It's not required

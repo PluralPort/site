@@ -4,29 +4,31 @@ app_id: plural_star
 # adopter | research | planned | inactive
 status: research
 # sort position on /apps (lower numbers first, starting with Prism and Sheaf due to their early adoption of PluralPort)
-order: 8
+order: 9
 description: React Native app with local backup JSON and tiered fronting semantics.
 summary: >-
   React Native app with AsyncStorage + filesystem backups. It has tiered
   fronting, flat groups, definitions + values for custom fields, channels
-  + messages, and noteboards.
+  + messages, and noteboards. Since v1.15.0 its PluralSpace importer also
+  reads OpenPlural v0.1 bundles (openplural.json), though there is no
+  export in that format yet.
 # Export/Import support (true/false)
 export: true
-import: false
+import: true
 # Overview of what the export physically is, e.g. "Single JSON document", "ZIP with manifest and media/", "encrypted envelope", etc.
 export_shape: Local backup JSON v1.2
 
 # PluralPort version targeted, e.g. '0.1'
 spec_version: null
 # Web (hosted) | iOS/Android | Desktop | Discord bot
-platform: null
-license: null
+platform: Android/iOS + Desktop (Electron)
+license: AGPL-3.0
 # URLs to multiple locations
-repo: null
-last_verified: null
-website: null
-apple_store: null
-google_play: null
+repo: https://github.com/ByHanyou/Plural-Star
+last_verified: 2026-09-09
+website: https://byhanyou.github.io/Plural-Star/
+apple_store: https://apps.apple.com/app/id6763964266
+google_play: https://play.google.com/store/apps/details?id=com.pluralspace.app
 logo: null
 self_reported: true
 
@@ -111,8 +113,8 @@ mapping:
 links:
   - label: Research doc
     href: https://github.com/pluralport/spec/blob/main/docs/apps/plural-star.md
-  - label: Repository
-    href: https://github.com/TheHanyou/Plural-Star
+  - label: Desktop edition
+    href: https://github.com/ByHanyou/Plural-Star-Desktop
 ---
 
 <!-- The area below is a markdown capable page for you to put content you want about your app. It's not required
