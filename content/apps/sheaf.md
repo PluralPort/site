@@ -16,22 +16,22 @@ summary: >-
   inventory.
 # Export/Import support (true/false)
 export: true
-import: false
+import: true
 # Overview of what the export physically is, e.g. "Single JSON document", "ZIP with manifest and media/", "encrypted envelope", etc.
 export_shape: /v1/export JSON v2; async zip backup with images
 
 # PluralPort version targeted, e.g. '0.1'
-spec_version: null
+spec_version: '0.1'
 # Web (hosted) | iOS/Android | Desktop | Discord bot
-platform: null
-license: null
+platform: Web (hosted)
+license: AGPL-3.0-or-later
 # URLs to multiple locations
-repo: null
-last_verified: null
-website: null
+repo: https://github.com/sheaf-project/sheaf
+last_verified: 2026-09-08
+website: https://sheaf.sh
 apple_store: null
 google_play: null
-logo: null
+logo: https://sheaf.sh/images/sheaf-pluralport-embed.png
 self_reported: true
 
 # Every module in the spec is listed below. Fill in the ones your app touches
@@ -46,62 +46,62 @@ self_reported: true
 modules:
   # Core records
   - key: systems
-    support: null
-    note: null
+    support: full
+    note: System profile, settings, safety and retention config.
   - key: members
     support: full
     note: null
   - key: fronting
-    support: null
-    note: Co-front intervals
+    support: full
+    note: Co-front intervals and point-in-time switches (front_events).
   - key: groups
-    support: null
-    note: Hierarchical groups + tags
+    support: full
+    note: Hierarchical groups with manual ordering.
   - key: taxonomy
-    support: null
-    note: Hierarchical groups + tags
+    support: full
+    note: Tags.
   - key: custom_fields
-    support: null
-    note: Definitions and values
+    support: full
+    note: Definitions and values, including select choices and privacy.
   - key: notes
-    support: null
-    note: Journals + revision history
+    support: full
+    note: Journals with revision history.
   - key: assets
-    support: null
-    note: Avatar URLs, uploaded-file inventory, privacy and safety metadata
+    support: partial
+    note: Avatar/banner URLs and an optional zip bundle with images.
   - key: privacy
-    support: null
-    note: Avatar URLs, uploaded-file inventory, privacy and safety metadata
+    support: full
+    note: Per-member, group, field, and relationship levels.
   # Optional modules
   - key: chat
-    support: null
-    note: Board messages, polls, and reminders
+    support: full
+    note: Board messages.
   - key: boards
-    support: null
+    support: full
     note: null
   # provisional in v0.1
   - key: relationships
-    support: null
-    note: null
+    support: full
+    note: Types plus member and group relationships.
   # provisional in v0.1
   - key: polls
-    support: null
+    support: full
     note: null
   - key: reminders
-    support: null
+    support: full
     note: null
   - key: habits
-    support: null
+    support: none
     note: null
   - key: proxy
-    support: null
-    note: null
+    support: none
+    note: Sheaf does not proxy messages.
   - key: sharing
-    support: null
-    note: null
+    support: partial
+    note: Share views round-trip; grants (live links) are deliberately never exported.
   - key: safety
-    support: null
-    note: null
+    support: full
+    note: Carried in the sheaf extension.
 
 mapping:
   - source: system object
