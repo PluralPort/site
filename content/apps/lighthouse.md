@@ -4,12 +4,13 @@ app_id: lighthouse
 # adopter | research | planned | inactive
 status: research
 # sort position on /apps (lower numbers first, starting with Prism and Sheaf due to their early adoption of PluralPort)
-order: 4
+order: 5
 description: Server-backed app exporting a ZIP of CSV files plus a narrow token API.
 summary: >-
   Server-backed Node/Express + PostgreSQL app. Exports a ZIP of CSV files
   and has a narrow token API. Most of its richer data lands in extensions
-  until a converter is built.
+  until a converter is built. Sign-ups on the hosted instance closed in
+  September 2026 while an offline desktop version is being built.
 # Export/Import support (true/false)
 export: true
 import: false
@@ -19,12 +20,12 @@ export_shape: ZIP of CSVs + narrow token API
 # PluralPort version targeted, e.g. '0.1'
 spec_version: null
 # Web (hosted) | iOS/Android | Desktop | Discord bot
-platform: null
-license: null
+platform: Web (hosted, self-hostable)
+license: Unspecified (no LICENSE file)
 # URLs to multiple locations
-repo: null
-last_verified: null
-website: null
+repo: https://github.com/team-crystalline/Lighthouse
+last_verified: 2026-09-09
+website: https://www.writelighthouse.com
 apple_store: null
 google_play: null
 logo: null
@@ -113,8 +114,6 @@ mapping:
 links:
   - label: Research doc
     href: https://github.com/pluralport/spec/blob/main/docs/apps/lighthouse.md
-  - label: Repository
-    href: https://github.com/team-crystalline/Lighthouse
 ---
 
 <!-- The area below is a markdown capable page for you to put content you want about your app. It's not required

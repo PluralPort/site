@@ -4,7 +4,7 @@ app_id: masquerade
 # adopter | research | planned | inactive
 status: research
 # sort position on /apps (lower numbers first, starting with Prism and Sheaf due to their early adoption of PluralPort)
-order: 11
+order: 12
 description: >-
   Proxy bot for Stoat with a small members-only JSON export, useful as a
   migration source.
@@ -23,10 +23,10 @@ export_shape: Single JSON document ({"profiles":[...]})
 spec_version: null
 # Web (hosted) | iOS/Android | Desktop | Discord bot
 platform: Stoat bot
-license: null
+license: Unlicensed (no LICENSE file)
 # URLs to multiple locations
-repo: null
-last_verified: null
+repo: https://github.com/TheBobBobs/masquerade-bot
+last_verified: 2026-09-09
 website: null
 apple_store: null
 google_play: null
@@ -97,4 +97,9 @@ modules:
   - key: safety
     support: none
     note: null
+
+# Custom links to add to the page
+links:
+  - label: Support server
+    href: https://stt.gg/SPMxwwC8
 ---

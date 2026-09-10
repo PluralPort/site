@@ -4,7 +4,7 @@ app_id: openselves
 # adopter | research | planned | inactive
 status: research
 # sort position on /apps (lower numbers first, starting with Prism and Sheaf due to their early adoption of PluralPort)
-order: 6
+order: 7
 description: >-
   Smaller offline-first app with browser storage and a sync schema, but no
   general export file found.
@@ -21,12 +21,12 @@ export_shape: Sync log DTOs; no export found
 # PluralPort version targeted, e.g. '0.1'
 spec_version: null
 # Web (hosted) | iOS/Android | Desktop | Discord bot
-platform: null
-license: null
+platform: Web (hosted, self-hostable)
+license: AGPL-3.0
 # URLs to multiple locations
-repo: null
-last_verified: null
-website: null
+repo: https://codeberg.org/FreckleQueens/OpenSelves
+last_verified: 2026-09-09
+website: https://openselves.org
 apple_store: null
 google_play: null
 logo: null
@@ -111,8 +111,6 @@ mapping:
 links:
   - label: Research doc
     href: https://github.com/pluralport/spec/blob/main/docs/apps/openselves.md
-  - label: Repository
-    href: https://github.com/FreckleQueens/OpenSelves
 ---
 
 <!-- The area below is a markdown capable page for you to put content you want about your app. It's not required

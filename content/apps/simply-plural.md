@@ -2,29 +2,29 @@
 name: Simply Plural
 app_id: simply_plural
 # adopter | research | planned | inactive
-status: research
+status: inactive
 # sort position on /apps (lower numbers first, starting with Prism and Sheaf due to their early adoption of PluralPort)
-order: 9
-description: Public token API plus Mongo collection export used by migration tooling.
+order: 10
+description: Former public token API plus Mongo collection export used by migration tooling. Shut down 2026-07-01.
 summary: >-
-  Public token API + raw Mongo export. It still matters because many
-  migration paths flow through it, even though the service is being
-  discontinued.
+  Public token API + raw Mongo export. The service shut down on
+  2026-07-01, so no new exports can be made, but it still matters because
+  many migration paths flow through exports users downloaded before then.
 # Export/Import support (true/false)
 export: true
 import: false
 # Overview of what the export physically is, e.g. "Single JSON document", "ZIP with manifest and media/", "encrypted envelope", etc.
-export_shape: Mongo collection export + token API
+export_shape: Mongo collection export + token API (previously downloaded exports only)
 
 # PluralPort version targeted, e.g. '0.1'
 spec_version: null
 # Web (hosted) | iOS/Android | Desktop | Discord bot
-platform: null
-license: null
+platform: iOS/Android + Web (shut down)
+license: Closed source (API server source published)
 # URLs to multiple locations
-repo: null
-last_verified: null
-website: null
+repo: https://github.com/ApparyllisOrg/SimplyPluralApi
+last_verified: 2026-09-09
+website: https://apparyllis.com
 apple_store: null
 google_play: null
 logo: null
@@ -117,8 +117,6 @@ mapping:
 links:
   - label: Research doc
     href: https://github.com/pluralport/spec/blob/main/docs/apps/simply-plural.md
-  - label: API source
-    href: https://github.com/ApparyllisOrg/SimplyPluralApi
   - label: Discontinuation notice
     href: https://apparyllis.com/simply-plural-will-be-discontinued/
 ---

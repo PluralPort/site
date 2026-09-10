@@ -4,7 +4,7 @@ app_id: pluralkit
 # adopter | research | planned | inactive
 status: research
 # sort position on /apps (lower numbers first, starting with Prism and Sheaf due to their early adoption of PluralPort)
-order: 7
+order: 8
 description: >-
   Discord bot with a public API and JSON datafile export based on switch
   events.
@@ -21,10 +21,10 @@ export_shape: API + datafile v2 JSON
 # PluralPort version targeted, e.g. '0.1'
 spec_version: null
 # Web (hosted) | iOS/Android | Desktop | Discord bot
-platform: null
-license: null
+platform: Discord bot
+license: AGPL-3.0
 # URLs to multiple locations
-repo: null
+repo: https://github.com/PluralKit/PluralKit
 last_verified: null
 website: https://pluralkit.me
 apple_store: null
