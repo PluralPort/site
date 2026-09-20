@@ -3,6 +3,9 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "clean": "rm -rf .output dist",
+    "prebuild": "npm run clean",
+    "pregenerate": "npm run clean",
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
