@@ -6,20 +6,23 @@ status: research
 # sort position on /apps (lower numbers first, starting with Prism and Sheaf due to their early adoption of PluralPort)
 order: 15
 description: >-
-  Simply Plural preservation toolkit and upcoming browser app that plans
-  to treat PluralPort as a versioned import source.
+  Simply Plural preservation and recovery toolkit, with a browser app in
+  development and a source-independent import framework planned for
+  versioned interchange formats.
 summary: >-
   An independent preservation and continuity project for systems affected
-  by the Simply Plural shutdown. Today it is Python and SQL tooling for
-  working with exports users saved before the shutdown; a privacy-focused
-  browser app with a source-independent import framework is in
-  development. Its maintainers have said they intend to support the spec
-  as one versioned source format among several.
+  by the Simply Plural shutdown. Today it includes Python and SQL tooling
+  for working with preserved Simply Plural data, with a privacy-focused
+  browser app and source-independent import framework in development.
+  Its maintainers intend to support PluralPort/OpenPlural as one
+  versioned interchange format among several, with provenance, warnings,
+  and conformance testing rather than treating it as the internal data
+  model.
 # Export/Import support (true/false)
 export: false
 import: false
 # Overview of what the export physically is, e.g. "Single JSON document", "ZIP with manifest and media/", "encrypted envelope", etc.
-export_shape: No export of its own yet; consumes preserved Simply Plural exports
+export_shape: No PluralBridge export of its own yet; consumes preserved Simply Plural data and PluralBridge-shaped per-collection exports during development
 
 # PluralPort version targeted, e.g. '0.1'
 spec_version: null
@@ -28,12 +31,12 @@ platform: Browser app (in development), Python and SQL tooling
 license: GPL-3.0
 # URLs to multiple locations
 repo: https://github.com/needsofmany/PluralBridge
-last_verified: 2026-09-09
+last_verified: 2026-09-23
 website: https://thepluralbridge.org
 apple_store: null
 google_play: null
 logo: null
-self_reported: false
+self_reported: true
 
 # Every module in the spec is listed below. Fill in the ones your app touches
 #
@@ -104,20 +107,31 @@ modules:
 links:
   - label: Stated plan for OpenPlural support
     href: https://github.com/needsofmany/PluralBridge/issues/38#issuecomment-5227545557
+  - label: Lighthouse-DID Hub importer feedback
+    href: https://github.com/needsofmany/PluralBridge/issues/38#issuecomment-5227545557
 ---
 
 ## Where things stand
 
 PluralBridge is not a system tracker in the usual sense. It exists to keep
-Simply Plural data usable after that service shut down, first as scripts and
-database tooling, and soon as a browser app that imports a preserved export
+Simply Plural data usable after that service shut down, first as preservation
+and recovery tooling, and then as a browser app that imports preserved data
 through a reviewable, auditable process.
 
-In August 2026 its maintainers described their import design as a
-source-independent framework with per-source plugins, with Simply Plural
-first and PluralSpace next. They said they treat this spec as a developing
-interchange standard that they will support against a specific version, with
-conformance testing, provenance, and warnings, rather than adopting it as their
-internal data model. No spec-related code exists in the repository yet.
+The PluralBridge import design is source-independent: source formats are
+handled through per-source import paths, with provenance, validation summaries,
+and warnings rather than silent normalization. Simply Plural is the first major
+source target.
 
-This page was written from the project's public repository and website.
+The maintainers intend to support PluralPort/OpenPlural as a versioned
+interchange source format among several. The intent is conformance against a
+specific version, not adoption of the interchange format as PluralBridge's
+internal data model.
+
+Lighthouse-DID Hub has also reported testing against Simply Plural /
+PluralBridge-shaped data, including importer edge cases around front-history
+records, multiple open front entries, timestamp assumptions, custom fields,
+empty-but-valid structures, archived members, and group/folder mapping.
+
+This page is now maintainer-updated from the project's public repository,
+website, and public issue discussion.
