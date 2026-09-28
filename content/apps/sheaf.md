@@ -23,14 +23,14 @@ export_shape: /v1/export JSON v2; async zip backup with images
 # PluralPort version targeted, e.g. '0.1'
 spec_version: '0.1'
 # Web (hosted) | iOS/Android | Desktop | Discord bot
-platform: Web (hosted)
+platform: Web (hosted), Android+WearOS, iOS+WatchOS
 license: AGPL-3.0-or-later
 # URLs to multiple locations
 repo: https://github.com/sheaf-project/sheaf
 last_verified: 2026-09-08
 website: https://sheaf.sh
-apple_store: null
-google_play: null
+apple_store: https://apps.apple.com/us/app/sheaf-plural-system-tracker/id6766770364
+google_play: https://play.google.com/store/apps/details?id=systems.lupine.sheaf
 logo: https://sheaf.sh/images/sheaf-pluralport-embed.png
 self_reported: true
 
