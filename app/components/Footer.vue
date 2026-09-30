@@ -14,6 +14,7 @@
         <NuxtLink href="/sync" class="text-mut no-underline hover:text-fg">Sync</NuxtLink>
         <NuxtLink href="/adopt" class="text-mut no-underline hover:text-fg">Adopt</NuxtLink>
         <NuxtLink href="/apps" class="text-mut no-underline hover:text-fg">Apps</NuxtLink>
+        <a href="https://pluralport.github.io/pluralport-converter/" target="_blank" class="text-mut no-underline hover:text-fg">Converter</a>
         <NuxtLink href="/about" class="text-mut no-underline hover:text-fg">About</NuxtLink>
       </nav>
 

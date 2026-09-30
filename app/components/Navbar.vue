@@ -5,6 +5,7 @@ import Sun from "~/components/icons/sun.vue";
 import Moon from "~/components/icons/moon.vue";
 import Github from "~/components/icons/github.vue";
 import XMark from "~/components/icons/xmark-square.vue";
+import External from "~/components/icons/external.vue";
 
 const route = useRoute()
 
@@ -13,6 +14,7 @@ const navLinks = [
   { label: 'Sync', to: '/sync' },
   { label: 'Adopt', to: '/adopt' },
   { label: 'Apps', to: '/apps' },
+  { label: 'Converter', to: 'https://pluralport.github.io/pluralport-converter/', external: true },
   { label: 'About', to: '/about' },
 ]
 
@@ -80,14 +82,15 @@ onMounted(() => {
           v-for="link in navLinks"
           :key="link.to"
           :href="link.to"
+          :target="link.external ? '_blank' : undefined"
           :aria-current="isActive(link.to) ? 'page' : undefined"
           :class="[
-            'transition',
+            'inline-flex items-center gap-1 transition',
             isActive(link.to)
               ? 'text-fg underline decoration-acc decoration-2 underline-offset-8'
               : 'text-mut no-underline hover:text-fg',
           ]"
-        >{{ link.label }}</NuxtLink>
+        >{{ link.label }}<External v-if="link.external" size="0.8em" /></NuxtLink>
       </nav>
 
       <div class="ml-auto flex shrink-0 items-center gap-3 whitespace-nowrap text-sm text-mut">
@@ -117,14 +120,15 @@ onMounted(() => {
             v-for="link in navLinks"
             :key="link.to"
             :href="link.to"
+            :target="link.external ? '_blank' : undefined"
             :aria-current="isActive(link.to) ? 'page' : undefined"
             :class="[
-              'rounded px-2 py-2 no-underline transition',
+              'flex items-center gap-1 rounded px-2 py-2 no-underline transition',
               isActive(link.to)
                 ? 'bg-sunk text-fg'
                 : 'hover:bg-sunk hover:text-fg',
             ]"
-          >{{ link.label }}</NuxtLink>
+          >{{ link.label }}<External v-if="link.external" size="0.8em" /></NuxtLink>
         </nav>
       </div>
     </DisclosurePanel>
