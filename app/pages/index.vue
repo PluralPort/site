@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import ArrowRight from "~/components/icons/arrow-right.vue";
+import External from "~/components/icons/external.vue";
 
 const { data: appList } = await useAsyncData('home-apps', () =>
   queryCollection('apps').order('order', 'ASC').select('app_id').all(),
@@ -15,9 +16,10 @@ const apps = computed(() => appList.value ?? [])
           <p class="text-pretty text-[34px] font-normal leading-[1.3] tracking-[-0.022em]">A shared file format for plurality apps.</p>
           <p class="mt-5 max-w-[52ch] text-[16.5px] leading-[1.65] text-fg2">Most plurality apps store the same kinds of data: members, systems, fronting history, custom fields, and notes. The problem is that they don’t agree on the shape. PluralPort gives apps one common export and import format, instead of a pile of one-off converters.</p>
 
-          <div class="mt-7 flex gap-7 text-lg">
+          <div class="mt-7 flex flex-wrap gap-x-7 gap-y-3 text-lg">
             <NuxtLink href="/format" class="text-fg hover:text-fg2 flex">Read the Format Spec <ArrowRight class="mt-1 ml-2" /></NuxtLink>
             <NuxtLink href="/sync" class="text-fg hover:text-fg2 flex">Sync protocol <ArrowRight class="mt-1 ml-2" /></NuxtLink>
+            <a href="https://pluralport.github.io/pluralport-converter/" target="_blank" class="text-fg hover:text-fg2 flex">Convert an export <External class="mt-1.5 ml-2" /></a>
           </div>
         </div>
 
@@ -64,6 +66,7 @@ const apps = computed(() => appList.value ?? [])
           <h2 class="text-[26px] font-semibold tracking-[-0.02em]">What the problem looks like</h2>
           <p class="mt-2">There are a lot of plurality apps, and most of them store the same basic things: systems, members, fronting history, custom fields, and notes. But they do not store them in the same shape. The result is a lot of one-off conversions, and a lot of places where data gets lost, guessed, or silently reshaped.</p>
           <p class="mt-2">PluralPort is a common format for exports and imports. It is not a new app and not a service. It is a shared file shape that lets apps move data without rebuilding the same conversion logic over and over.</p>
+          <p class="mt-2">For apps that do not write PluralPort files yet, the <a href="https://pluralport.github.io/pluralport-converter/" target="_blank" class="text-fg underline decoration-rule2 underline-offset-2 hover:text-fg2">PluralPort Converter</a> turns their own export into one, in your browser, without an account. Its source mappings double as reference implementations of the spec.</p>
         </div>
       </div>
       <div class="mx-auto max-w-300 px-8 pt-16 pb-16">

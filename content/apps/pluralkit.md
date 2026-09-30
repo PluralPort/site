@@ -117,6 +117,8 @@ links:
     href: https://github.com/pluralport/spec/blob/main/docs/apps/pluralkit.md
   - label: API docs
     href: https://pluralkit.me/api/
+  - label: Convert an export to PluralPort
+    href: https://pluralport.github.io/pluralport-converter/
 ---
 
 <!-- The area below is a markdown capable page for you to put content you want about your app. It's not required
