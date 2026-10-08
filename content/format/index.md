@@ -70,5 +70,6 @@ Use these short IDs in `SourceRef.app` and in extension namespaces:
 - `openselves`
 - `ampersand`
 - `pluralspace`
+- `open_plural`
 
 New IDs should be added through the repo. Private namespaces can use reverse-DNS keys such as `com.example.app` inside `extensions`.

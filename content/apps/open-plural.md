@@ -2,7 +2,7 @@
 name: Open Plural
 app_id: open_plural
 # adopter | research | planned | inactive
-status: research
+status: planned
 # sort position on /apps (lower numbers first, starting with Prism and Sheaf due to their early adoption of PluralPort)
 order: 16
 description: >-
@@ -12,12 +12,13 @@ summary: >-
   A hosted Simply Plural-style tracker with a Rust backend and an Angular
   web app, started in March 2026. It has its own JSON export and import
   covering privacy buckets, custom fields, folders, members, polls, and
-  gallery albums, plus a Simply Plural importer. It shares a name with
-  this spec's original name but has no connection to it and no support for
-  the format.
+  gallery albums, user profile, plus a Simply Plural importer. It can
+  otherwise import members from PluralKit via token. It shares a name
+  with this spec's original name but has no connection to it and no
+  support for the format.
 # Export/Import support (true/false)
 export: true
-import: false
+import: true
 # Overview of what the export physically is, e.g. "Single JSON document", "ZIP with manifest and media/", "encrypted envelope", etc.
 export_shape: Single JSON document in its own schema, limited to one export every six hours
 
@@ -28,12 +29,12 @@ platform: Web (hosted PWA)
 license: GPL-3.0
 # URLs to multiple locations
 repo: https://github.com/OpenPlural/opl-backend
-last_verified: 2026-09-09
+last_verified: 2026-10-08
 website: https://openplural.webbiii.cc/
 apple_store: null
 google_play: null
-logo: null
-self_reported: false
+logo: https://openplural.webbiii.cc/icons/icon1024.png
+self_reported: true
 
 # Every module in the spec is listed below. Fill in the ones your app touches
 #
@@ -46,28 +47,28 @@ modules:
     support: null
     note: null
   - key: members
-    support: null
-    note: Name, pronouns, avatar, description, colour, archived and custom-front flags, sort order.
+    support: planned
+    note: Name, pronouns, avatar, description, color, archived, custom-front flags, sort order, and PluralKit ID.
   - key: fronting
     support: null
     note: Front history exists in the app but is not part of the export.
   - key: groups
-    support: null
+    support: planned
     note: Folders with a parent id, so hierarchical.
   - key: taxonomy
     support: null
     note: Folders only.
   - key: custom_fields
-    support: null
+    support: planned
     note: Typed definitions with string values on members.
   - key: notes
-    support: null
+    support: planned
     note: null
   - key: assets
-    support: null
-    note: Avatar URLs and per-member gallery albums.
+    support: planned
+    note: Avatar URLs, CDN images and per-member gallery albums.
   - key: privacy
-    support: null
+    support: planned
     note: Named privacy buckets applied to members, folders, fields, and albums.
   # Optional modules
   - key: chat
@@ -82,7 +83,7 @@ modules:
     note: null
   # provisional in v0.1
   - key: polls
-    support: null
+    support: planned
     note: Polls with abstain and veto options and per-member answers.
   - key: reminders
     support: null
@@ -113,6 +114,8 @@ mapping:
     target: polls module
   - source: gallery[] albums
     target: Asset records in extensions
+  - source: cdn
+    target: Asset records in extensions
 
 # Custom links to add to the page
 links:
@@ -135,7 +138,5 @@ native format and Simply Plural exports.
 A single JSON document from the backend's export endpoint, rate-limited to one
 export every six hours per account. It contains privacy buckets, custom field
 definitions, folders, members with their field values and privacy, polls with
-answers, and gallery albums. Fronting history is not included.
-
-This page was written from the app's public repositories rather than reported
-by its maintainers.
+answers, gallery albums, the user profile, and CDN images in base64 format.
+Fronting history is not included.
