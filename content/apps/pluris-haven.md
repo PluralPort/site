@@ -2,33 +2,32 @@
 name: Pluris Haven
 app_id: pluris_haven
 # adopter | research | planned | inactive
-status: planned
+status: adopter
 # sort position on /apps (lower numbers first, starting with Prism and Sheaf due to their early adoption of PluralPort)
 order: 13
 description: >-
-  Pre-alpha offline-first Flutter app whose roadmap lists restoring its
-  OpenPlural importer.
+  Pre-alpha offline-first Flutter app with PluralPort Draft v0.1 JSON file
+  import and export.
 summary: >-
   Offline-first Flutter app for systems and other collectives, with an
-  optional server for accounts, friends, and encrypted backups. It is
-  pre-alpha. An OpenPlural importer existed before a history rewrite and
-  restoring it is on the current priority list, alongside importers for
-  Simply Plural, PluralKit, Tupperbox, PluralSpace, and Ampersand.
+  optional server for accounts, friends, and encrypted backups. Its pre-alpha
+  mobile app imports and exports PluralPort Draft v0.1 JSON files through its
+  existing preview/review and local-file flows.
 # Export/Import support (true/false)
 export: true
-import: false
+import: true
 # Overview of what the export physically is, e.g. "Single JSON document", "ZIP with manifest and media/", "encrypted envelope", etc.
-export_shape: Local export and a password-protected portable recovery archive, both in its own format
+export_shape: Single PluralPort Draft v0.1 JSON document
 
 # PluralPort version targeted, e.g. '0.1'
-spec_version: null
+spec_version: '0.1'
 # Web (hosted) | iOS/Android | Desktop | Discord bot
 platform: Android/iOS (pre-alpha)
 license: Source-available, noncommercial
 # URLs to multiple locations
 repo: https://github.com/EndofTimeWorks/pluris-haven
-last_verified: 2026-09-09
-website: null
+last_verified: 2026-10-07
+website: https://plurishaven.app
 apple_store: null
 google_play: null
 logo: null
@@ -42,32 +41,32 @@ self_reported: false
 modules:
   # Core records
   - key: systems
-    support: null
-    note: null
+    support: partial
+    note: Haven currently imports one system profile and preserves the original source records for optional retention.
   - key: members
-    support: planned
-    note: Members stored locally.
+    support: partial
+    note: Members and source references map into Haven's local import identifiers.
   - key: fronting
-    support: planned
-    note: Fronts stored locally.
+    support: partial
+    note: Front periods and events import as local front history; Haven exports front periods.
   - key: groups
-    support: planned
-    note: Groups stored locally.
+    support: partial
+    note: Groups and group memberships import and export.
   - key: taxonomy
-    support: planned
-    note: Tags stored locally.
+    support: partial
+    note: Haven preserves its tags and member-tag assignments in a namespaced extension because Draft v0.1 does not yet define these record fields.
   - key: custom_fields
-    support: planned
-    note: Custom fields stored locally.
+    support: partial
+    note: Haven preserves custom-field definitions and values in a namespaced extension because Draft v0.1 does not yet define these record fields.
   - key: notes
-    support: planned
-    note: Notes and journals stored locally.
+    support: partial
+    note: Notes import and export; journals are preserved in the Pluris Haven extension.
   - key: assets
-    support: null
-    note: null
+    support: partial
+    note: Asset references import; local avatar bytes export in the Pluris Haven extension.
   - key: privacy
-    support: null
-    note: null
+    support: partial
+    note: Documented privacy values are retained where mapped; unsupported source detail can be kept in encrypted raw payloads.
   # Optional modules
   - key: chat
     support: null
@@ -105,14 +104,16 @@ links:
     href: https://github.com/EndofTimeWorks/pluris-haven/blob/main/docs/project-state.md
 ---
 
-## Where OpenPlural support stands
+## Current support
 
-The project's own state document marks OpenPlural import as regressed: the
-importer disappeared in a history rewrite rather than being removed on purpose,
-and restoring it through the current import architecture is listed among the
-next completion priorities. Export in the format is not on the roadmap yet.
+Pluris Haven has a separate OpenPlural v0.1 importer. Its PluralPort support is
+limited to portable Draft v0.1 JSON files; it does not implement a live
+PluralPort protocol, hosted service, federation, or synchronisation transport.
 
-The app is pre-alpha and not yet in public testing, so this page was written
-from its repository rather than reported by its maintainers. The module table
-reflects what the app stores locally and could carry once the importer returns,
-not anything shipped today.
+The importer validates the envelope, previews mapped records before writing,
+and offers encrypted retention of original records, `source_refs`, and
+extensions. The exporter uses the currently documented record shapes, adds structured
+warnings when fidelity is reduced, and preserves Haven-only collections under
+`extensions.pluris_haven`. Checked-in fixture tests exist, but independent
+cross-application file evidence is still needed before claiming broad
+compatibility.
