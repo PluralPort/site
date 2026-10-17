@@ -10,6 +10,8 @@ This is the starting point for the PluralPort format spec. It covers the general
 - [Fronting](/format/fronting)
 - [Modules and contract](/format/modules)
 
+Looking to move your own data rather than implement the format? The [PluralPort Converter](https://pluralport.github.io/pluralport-converter/) turns an export from an app that does not write PluralPort files yet into one, entirely in your browser.
+
 ## Data conventions
 
 1. JSON is the canonical interchange format.

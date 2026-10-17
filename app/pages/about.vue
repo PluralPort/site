@@ -31,7 +31,7 @@
       <div class="bg-panel p-6">
         <h3 class="text-base font-semibold text-fg">Licensing</h3>
         <p class="mt-2 text-[15px] leading-6 text-fg2">
-          Spec text CC BY 4.0. Reference validator and schemas MIT. No trademark restrictions on “exports PluralPort.”
+          Spec text CC BY 4.0. Reference validator, schemas, and the <a href="https://github.com/PluralPort/pluralport-converter" target="_blank" class="text-fg underline decoration-rule2 underline-offset-2 hover:text-fg2">converter</a> MIT. No trademark restrictions on “exports PluralPort.”
         </p>
       </div>
     </div>

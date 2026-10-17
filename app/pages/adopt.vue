@@ -55,6 +55,16 @@
     </div>
 
     <div class="mt-12 border border-rule bg-sunk p-6">
+      <h3 class="text-base font-semibold text-fg">Want a worked example?</h3>
+      <p class="mt-2 text-[15px] leading-6 text-fg2">
+        The <a href="https://pluralport.github.io/pluralport-converter/" target="_blank" class="text-fg underline decoration-rule2 underline-offset-2 hover:text-fg2">PluralPort Converter</a>
+        does steps 1 to 3 for apps that have not adopted the format themselves. Its
+        <a href="https://github.com/PluralPort/pluralport-converter" target="_blank" class="text-fg underline decoration-rule2 underline-offset-2 hover:text-fg2">source mappings</a>
+        are reference implementations you can crib from, and the file it produces is a handy fixture for testing your importer.
+      </p>
+    </div>
+
+    <div class="mt-6 border border-rule bg-sunk p-6">
       <h3 class="text-base font-semibold text-fg">Register your App ID</h3>
       <p class="mt-2 text-[15px] leading-6 text-fg2">
         Short IDs are used in <code class="text-[14px]">SourceRef.app</code> and as <code class="text-[14px]">extensions</code>
